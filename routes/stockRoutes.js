@@ -38,6 +38,14 @@ router.post("/registerWood", async (req, res) => {
   }
 });
 
+router.get("/registeredFurniture", (req, res)=>{
+  res.render("furniture")
+});
+
+router.get("/registeredWood", (req, res)=>{
+  res.render("wood")
+})
+
 module.exports= router;
 // router.get("/user", (req, res) => {
 //   res.render("user");

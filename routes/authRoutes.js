@@ -7,6 +7,7 @@ const Registration = require('../models/Registration');
 router.get("/register", (req, res) => {
   res.render("signup");
 });
+
 router.post("/register", async(req, res) =>{
   try {
     const newUser = new Registration(req.body)
@@ -41,7 +42,7 @@ router.post("/login", passport.authenticate("local", {failureRedirect:"/login"})
     res.redirect("/")
   }else if(req.user.role==="Sales-Agent"){
     res.redirect("/registerWood")
-  }else{
+  }else{ 
     res.render("nonuser")
   }
 });
@@ -55,7 +56,11 @@ router.get("/logout", (req,res)=>{
       res.redirect("/")
     })
   }
-})
+});
+
+router.get("/Users", (req,res)=>{
+  res.render("registered_users")
+});
 
 //last line
 module.exports = router;
