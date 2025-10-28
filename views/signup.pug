@@ -1,0 +1,25 @@
+extends layout 
+block content
+  head
+    title Register Users
+    link(rel='stylesheet' href='css/style_user.css')
+  header
+    h1 Register Users
+    img.header-img(src='images/user.jpg' alt='Team')
+  main
+    form#userForm(action='/register' method='post')
+      label Full Name:
+      input#userName(type='text' name='fullName' placeholder='Enter full name' )
+      label Email:
+      input#userEmail(type='email' name='email' placeholder='Enter email' )
+      label Password:
+      input#userPassword(type='password' name='password' placeholder='Enter password' )
+      label Role:
+      select#userRole(name='role')
+        option(value='') Select Role
+        option(value='Manager') Manager
+        option(value='Sales-Agent') Sales Agent
+      br
+      button(type='submit') Register User
+      br
+  //- script(src='js/script_user.js')

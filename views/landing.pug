@@ -1,0 +1,31 @@
+extends layout 
+block content
+  head 
+  title Mayondo Wood Inventory System
+  link(rel='stylesheet' href='css/style_landing.css')
+  // Hero Section
+  header
+    .hero
+      .overlay
+        h1 Mayondo Wood Inventory System
+  // Main Cards
+  main
+    section.cards
+      .card
+        img(src='images/wood stock.jpg' alt='Wood Stock')
+        h3 Register Wood Stock
+        p Add and track all wood materials easily.
+        a.btn(href='/registerWood') Go
+      .card
+        img(src='images/ailany-5-piece-bedroom-set.webp' alt='Furniture Stock')
+        h3 Register Furniture Stock
+        p Manage all furniture items with prices and quantities.
+        a.btn(href='/registerFurniture') Go
+      .card
+        img(src='images/user.jpg' alt='Users')
+        h3 Register Users
+        p Manage managers and sales agents with ease.
+        a.btn(href='/register') Go
+  footer
+    p &copy; 2025 Mayondo Wood Furniture
+  script(src='js/script_landing.js')

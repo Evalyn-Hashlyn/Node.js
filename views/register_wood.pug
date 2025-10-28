@@ -1,0 +1,20 @@
+extends layout 
+block content
+  head
+    title Register Wood Stock
+    link(rel='stylesheet' href='css/style_wood.css')
+  header
+    h1 Register Wood Stock
+    img.header-img(src='images/wood stock.jpg' alt='Wood Logs')
+  main
+    form#woodForm(action='/registerWood' method='post')
+      label Wood Type:
+      input#woodType(type='text' name='woodType' placeholder='E.g., Oak, Mahogany' required='')
+      label Quantity (in pieces):
+      input#quantity(type='number' name='quantity' placeholder='Enter quantity' required='')
+      label Supplier Name:
+      input#supplier(type='text' name='supplier' placeholder='Supplier name' required='')
+      label Date Received:
+      input#dateReceived(type='date' name='dateReceived' required='')
+      button(type='submit') Register Wood
+  //- script(src='js/script_wood.js')

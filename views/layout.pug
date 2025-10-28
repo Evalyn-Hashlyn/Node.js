@@ -1,0 +1,25 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+//-   title Mayondo Wood Inventory System
+//-   link(rel='stylesheet' href='css/style_landing.css')
+//  Navigation Bar
+nav.navbar
+  .logo
+    | Mayondo
+    span Wood
+  ul.nav-links
+    li
+      a.active(href='/') Home
+    li
+      a(href='/registerWood') Wood Stock
+    li
+      a(href='/registerFurniture') Furniture Stock
+    li
+      a(href='/register') Signup
+    li
+      a(href='/login') Login
+    li
+      a(href='/logout') Logout 
+block content
