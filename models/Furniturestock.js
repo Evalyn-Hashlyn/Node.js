@@ -16,6 +16,9 @@ const furniturestockSchema = new mongoose.Schema({
   material: {
     type: String,
   },
+  furnitureImage: {
+    type: String,
+  }
 });
 
 module.exports = mongoose.model('Furniture', furniturestockSchema);

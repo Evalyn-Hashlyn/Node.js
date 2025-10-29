@@ -13,18 +13,10 @@ table
       th Supplier
       th Date Received
   tbody
-    tr
-      td Walnut
-      td 50
-      td Luxury Woods Ltd.
-      td 2025-10-28
-    tr
-      td Mahogany
-      td 100
-      td Wood Supplier Inc.
-      td 2025-10-28
-    tr
-      td Oak
-      td 200
-      td Timber Co.
-      td 2025-10-28
+    if woodStock.length > 0
+      each item in woodStock
+        tr
+          td #{item.woodType}
+          td #{item.quantity}
+          td #{item.supplier}
+          td #{item.dateReceived}

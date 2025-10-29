@@ -13,18 +13,10 @@ table
       th Price (per unit)
       th Material
   tbody
-    tr
-      td Table
-      td 3
-      td 350000
-      td Mahogany
-    tr
-      td Chair
-      td 5
-      td 150000
-      td Mahogany
-    tr
-      td Lux Bed
-      td 5
-      td 2500000
-      td Walnut
+    if furnitureStock.length > 0
+      each item in furnitureStock
+        tr
+          td #{item.furnitureType}
+          td #{item.quantity}
+          td #{item.price}
+          td #{item.material}

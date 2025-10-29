@@ -58,8 +58,14 @@ router.get("/logout", (req,res)=>{
   }
 });
 
-router.get("/Users", (req,res)=>{
-  res.render("registered_users")
+router.get("/users", async(req,res)=>{
+  try {
+    const users = await Registration.find().sort({$natural:-1})
+    res.render("registered_users", {users})
+  } catch (error) {
+    console.error("Error getting user from the DB!")
+    res.status(400).send("Unable to get users from the DB!")
+  }
 });
 
 //last line

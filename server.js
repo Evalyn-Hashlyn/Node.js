@@ -40,6 +40,7 @@ app.set("views", path.join(__dirname, "views")); // specifying the views directo
 // 4. Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public"))); //without this, you cannot push data to the database
+app.use('/public/images/uploads', express.static(__dirname + '/public/images/uploads'));
 //Express session configs
 app.use(expressSession);
 app.use(passport.initialize());

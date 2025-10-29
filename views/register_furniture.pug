@@ -7,7 +7,7 @@ block content
     h1 Register Furniture Stock
     img.header-img(src='images/ailany-5-piece-bedroom-set.webp' alt='Furniture Stock')
   main
-    form#furnitureForm(action='/registerFurniture' method='post')
+    form#furnitureForm(action='/registerFurniture' method='post' enctype="multipart/form-data")
       label Furniture Type:
       input#furnitureType(type='text' name='furnitureType' placeholder='E.g., Table, Chair' required='')
       label Quantity:
@@ -16,6 +16,8 @@ block content
       input#price(type='number' name='price' placeholder='Enter price' required='')
       label Material:
       input#material(type='text' name='material' placeholder='E.g., Mahogany, Oak' required='')
+      label Upload Furniture Image:
+      input#image(type='file' name='funitureImage' placeholder='Upload Image' required='')
       br
       button(type='submit') Register Furniture
       br
