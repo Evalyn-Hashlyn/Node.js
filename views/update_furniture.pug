@@ -1,0 +1,22 @@
+extends layout 
+block content
+  head 
+  title Update Furniture Stock
+  link(rel='stylesheet' href='css/style_furniture.css')
+  header
+    h1 Update Furniture Stock
+    img.header-img(src='images/ailany-5-piece-bedroom-set.webp' alt='Furniture Stock')
+  main
+    form#furnitureForm(action="/furniture?id="+item._id method='post')
+      label Furniture Type:
+      input#furnitureType(type='text' name='furnitureType' value=item.furnitureType placeholder='E.g., Table, Chair' required='')
+      label Quantity:
+      input#quantity(type='number' name='quantity' value=item.quantity placeholder='Enter quantity' required='')
+      label Price (per unit):
+      input#price(type='number' name='price' value=item.price placeholder='Enter price' required='')
+      label Material:
+      input#material(type='text' name='material' value=item.material placeholder='E.g., Mahogany, Oak' required='')
+      br
+      button(type='submit') Register Furniture
+      br
+  //- script(src='js/script_furniture.js')

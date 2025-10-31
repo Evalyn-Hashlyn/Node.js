@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const connectEnsureLogin = require('connect-ensure-login');
+// const connectEnsureLogin = require('connect-ensure-login');
 const multer = require('multer');
+const {ensureAuthenticated, ensureManager, ensureSalesAgent} = require('../customMiddleware/auth');
 
 const Furniture = require('../models/Furniturestock');
 const Wood = require('../models/Woodstock');
@@ -16,12 +17,12 @@ var storage = multer.diskStorage({
     }
 })
 var upload = multer({ storage: storage })
-// connectEnsureLogin.ensureLoggedIn(),
-router.get("/registerFurniture", (req, res) => {
+
+router.get("/registerFurniture", ensureAuthenticated, ensureManager, (req, res) => {
   res.render("register_furniture");
 });
 
-router.post("/registerFurniture",  upload.single('funitureImage'), async (req, res) =>{
+router.post("/registerFurniture", ensureAuthenticated, ensureManager, upload.single('funitureImage'), async (req, res) =>{
   try {
     const furniture = new Furniture(req.body)
     furniture.furnitureImage = req.file.path
@@ -59,6 +60,37 @@ router.get("/registeredFurniture", async(req, res)=>{
     res.redirect("/")
   }
 });
+// Get furniture to update
+router.get("/furniture/:id", async(req,res) =>{
+  try {
+    const furniture = await Furniture.findOne({_id:req.params.id});
+    res.render("update_furniture", {item:furniture})
+  } catch (error) {
+    res.status(400).send('Unable to find item from the Database!')
+    console.log(error)
+  }
+});
+
+router.post("/furniture", async(req,res) =>{
+  try {
+     await Furniture.findByIdAndUpdate({_id:req.query.id}, req.body);
+    res.redirect("/registeredFurniture")
+  } catch (error) {
+    res.status(400).send('Unable to Update furniture in the Database!')
+    console.log(error)
+  }
+});
+
+// Delete furniture
+router.post("/deletefurniture", async(req,res) =>{
+  try {
+     await Furniture.deleteOne({_id:req.query.id});
+    res.redirect("/registeredFurniture")
+  } catch (error) {
+    res.status(400).send('Unable to delete furniture in the Database!')
+    console.log(error)
+  }
+});
 
 router.get("/registeredWood", async(req, res)=>{
   try {
@@ -68,6 +100,14 @@ router.get("/registeredWood", async(req, res)=>{
     console.error("Error getting wood stock from the DB!")
     res.redirect("/registeredWood")
   }
+});
+
+router.get("/managerDashboard", ensureAuthenticated, ensureManager, (req, res)=>{
+  res.render("manager_dashboard")
+});
+
+router.get("/agentDashboard", ensureAuthenticated, ensureSalesAgent, (req,res)=>{
+  res.render("agent_dashboard")
 });
 
 module.exports= router;

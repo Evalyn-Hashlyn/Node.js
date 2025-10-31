@@ -1,0 +1,104 @@
+extends manager_layout
+block content 
+  head
+    title Manager Dashboard | Mayondo Wood Furniture
+    link(rel='stylesheet' href='css/dashboard.css')
+  header
+    h1 Manager Dashboard - Mayondo Wood Furniture
+  main
+    // Registered Users Section
+    section#users
+      h2 Registered Users
+      table
+        tr
+          th Name
+          th Email
+          th Role
+        tr
+          td Wamala Timothy
+          td timo9@gmail.com
+          td Sales Agent
+        tr
+          td Atim Martha
+          td atim7@gmail.com
+          td Sales Agent
+    // Available Stock Section
+    section#stock
+      h2 Available Stock
+      h3 Furniture Stock
+      table
+          tr
+              th Image
+              th Furniture Type
+              th Quantity
+              th Price (per unit)
+              th Material
+          tr
+          td
+            img(src='images/dinning table.jpg' alt='Dining Table')
+          td Dining Table
+          td 15
+          td 350000
+          td Mahogany
+          tr
+          td
+            img(src='images/office-desk.webp' alt='Office Desk')
+          td Office Desk
+          td 20
+          td 1000000
+          td Oak
+      h3 Wood Stock
+      table
+        tr
+          th Image
+          th Wood Type
+          th Quantity
+          th Supplier
+          th Price per Unit
+          th Date Received
+        tr
+          td
+            img(src='images/mahogany.webp' alt='Mahogany')
+          td Mahogany
+          td 120 pcs
+          td Wood Supplier Inc
+          td 150000
+          td 2025-10-28
+        tr
+          td
+            img(src='images/oak-wood.jpeg' alt='Oak')
+          td Oak
+          td 75 pcs
+          td Timber Co.
+          td 150000
+          td 2025-10-28
+    // Sales Section
+    section#sales
+      h2 &#x1F4B0; Sales Made
+      table
+        tr
+          th Product
+          th Quantity
+          th Total Amount
+          th Customer
+          th Sales Agent
+        tr
+          td Dining Table
+          td 2
+          td 700000
+          td Peter Okello
+          td Atim Martha
+        tr
+          td Bookshelf
+          td 1
+          td 750000
+          td Grace Njeri
+          td Atim Martha
+        tr
+          td Office Desk
+          td 3
+          td 3000000
+          td Kevin Mwangi
+          td Wamala Timothy
+  script(src='js/script_manager.js')
+    

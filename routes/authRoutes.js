@@ -35,13 +35,14 @@ router.get("/login", (req, res)=>{
   res.render("login")
 })
 
-router.post("/login", passport.authenticate("local", {failureRedirect:"/login"}), (req, res) =>{
+router.post("/login", passport.authenticate("local", {failureRedirect:"/login", failureFlash:true}), (req, res) =>{
   req.session.user = req.user
+  req.flash("success_msg", `Welcome back, ${req.user.username}!`);
   //  console.log(req.user)
   if(req.user.role==="Manager"){
-    res.redirect("/")
+    res.redirect("/managerDashboard")
   }else if(req.user.role==="Sales-Agent"){
-    res.redirect("/registerWood")
+    res.redirect("/agentDashboard")
   }else{ 
     res.render("nonuser")
   }

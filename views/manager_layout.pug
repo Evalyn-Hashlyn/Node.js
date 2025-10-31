@@ -1,0 +1,35 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Mayondo Wood Inventory System
+  link(rel='stylesheet' href='css/dashboard.css')
+if flashMessage
+    .flash-message(class=flashMessage.type)
+        | #{flashMessage.text}
+    nav.navbar
+      .logo
+        | Mayondo 
+        span Wood
+//  Navigation Bar
+nav.navbar
+    if currentUser && (currentUser.role === 'Manager')
+    p= currentUser
+        ul.nav-links
+            li
+                a.active(href='/') Home
+            li
+                a(href='/users') View Users
+            li
+                a(href='/registerWood') Add Wood Stock
+            li
+                a(href='/registerFurniture') Add Furniture Stock
+            li
+                a(href='/registeredWood') View Wood Stock
+            li
+                a(href='/registeredFurniture') View Furniture Stock
+            li
+                a(href='#') View Sales
+            li
+                a(href='/logout') Logout 
+block content

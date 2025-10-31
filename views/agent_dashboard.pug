@@ -1,0 +1,81 @@
+doctype html
+head
+        meta(charset='UTF-8')
+        meta(name='viewport' content='width=device-width, initial-scale=1.0')
+        title Mayondo Wood Inventory System
+        link(rel='stylesheet' href='css/dashboard.css')
+        head
+            title Sales Agent Dashboard | Mayondo Wood Furniture
+            link(rel='stylesheet' href='css/agent.css')
+        header
+        ul.nav-links
+            li
+                a.active(href='/') Home
+            li
+                a(href='/registeredWood') View Wood Stock
+            li
+                a(href='/registeredFurniture') View Furniture Stock
+            li
+                a(href='#')  Enter Sale
+            li
+                a(href='/logout') Logout 
+        h1 Sales Agent Dashboard - Mayondo Wood Furniture
+        main
+        // Enter Sales Section
+        .new-sales
+            section#sales
+            h2 Record a New Sale
+            form#salesForm(onsubmit='recordSale(event)')
+                label(for='customerName') Customer Name
+                input#customerName(type='text' placeholder='Enter customer name' required='')
+                label(for='product') Product Sold
+                select#product(required='')
+                option(value='') --Select Product--
+                option(value='Dining Table') Dining Table
+                option(value='Office Desk') Office Desk
+                option(value='Bookshelf') Bookshelf
+                option(value='Wardrobe') Wardrobe
+                label(for='quantity') Quantity
+                input#quantity(type='number' min='1' required='')
+                label(for='amount') Total Amount ($)
+                input#amount(type='number' min='1' required='')
+                button.submit-btn(type='submit') Submit Sale
+            #salesList
+            // Track Orders Section
+            section#orders
+            h2 Orders Tracking
+            table
+                tr
+                th Customer
+                th Product
+                th Quantity
+                th Status
+                tr
+                td Peter Okello
+                td Dining Table
+                td 2
+                td Delivered
+                tr
+                td Grace Njeri
+                td Bookshelf
+                td 1
+                td In Progress
+                tr
+                td Kevin Mwangi
+                td Office Desk
+                td 3
+                td Pending
+            // View Tasks Section
+            section#tasks
+            h2 Assigned Tasks
+            .task
+                strong Task 1:
+                |  Follow up with customer Peter Okello about the delivered dining table order.
+            .task
+                strong Task 2:
+                |  Record at least 3 new sales this week and update stock levels.
+            .task
+                strong Task 3:
+                |  Coordinate with warehouse to confirm oak wood availability.
+        script(src='js/script_agent.js')
+        

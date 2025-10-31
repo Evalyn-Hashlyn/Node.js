@@ -3,6 +3,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const passport = require('passport');
+const flash = require('connect-flash');
 const expressSession = require("express-session")({
   secret:"secret",
   resave:false,
@@ -41,6 +42,7 @@ app.set("views", path.join(__dirname, "views")); // specifying the views directo
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public"))); //without this, you cannot push data to the database
 app.use('/public/images/uploads', express.static(__dirname + '/public/images/uploads'));
+
 //Express session configs
 app.use(expressSession);
 app.use(passport.initialize());
@@ -49,6 +51,12 @@ app.use(passport.session());
 passport.use(Registration.createStrategy());
 passport.serializeUser(Registration.serializeUser());
 passport.deserializeUser(Registration.deserializeUser());
+app.use(flash());
+// Global variables to be accessed by all views
+app.use((req, res,next) => {
+  res.locals.currentUser = req.session.user;
+  next();
+});
 
 // 5. Use imported Routes
 app.use("/", indexRoutes);
